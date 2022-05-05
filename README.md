@@ -9,3 +9,8 @@ This API is made By:
 • Zinx <br />
 • Bren <br />
 • SplushFNBR  <br />
+
+# Setup
+• First do npm install  <br />
+• then do npm start if you want to start it  <br />
+• if you want to build it do npm run make  <br />
