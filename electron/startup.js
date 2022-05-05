@@ -1,18 +1,47 @@
-const { app, BrowserWindow, Notification, ipcMain, nativeTheme, Menu, MenuItem } = require('electron');
+const { app, BrowserWindow, Notification, ipcMain, nativeTheme, Menu, MenuItem, shell } = require('electron');
 const logger = require('../structs/logger');
+const path = require("path");
+
+let ProgressInterval
 
 function createWindow() {
     const win = new BrowserWindow({
-        width: 800,
-        height: 600
-    })
+        width: 1050,
+        height: 600,
+        webPreferences: {
+            nodeIntegrationInWorker: true
+        }
+    });
+    win.loadFile('./electron/index.html');
+    win.webContents.openDevTools()
+    // const INCREMENT = 0.03
+    // const INTERVAL_DELAY = 100
 
-    win.loadFile('./electron/index.html')
+    // let c = 0;
+
+    // ProgressInterval = setInterval(() => {
+    //     win.setProgressBar(c);
+    //     if (c < 2) {
+    //         c += INCREMENT
+    //     } else {
+    //         c = (INCREMENT * 5)
+    //     }
+    // }, INTERVAL_DELAY);
 }
 
-function 
+// app.on('before-quit', () => {
+//     clearInterval(ProgressInterval)
+// });
 
 const menu = new Menu();
+
+if (process.defaultApp) {
+    if (process.argv.length >= 2) {
+        app.setAsDefaultProtocolClient("electron-fiddle", process.execPath, [path.resolve(process.argv[1])])
+    }
+} else {
+    app.setAsDefaultProtocolClient('electron-fiddle')
+}
 
 menu.append(new MenuItem({
     label: "Window Config",
@@ -20,25 +49,24 @@ menu.append(new MenuItem({
         role: "help",
         accelerator: process.platform === "darwin" ? "Alt+Cmd+I" : "Alt+Shift+I",
         click: () => {
-            logger.INFO("HAHA YES");
+            logger.INFO("Button Pressed!");
         }
     }]
 }));
-
 Menu.setApplicationMenu(menu);;
 
 ipcMain.handle('dark-mode:toggle', () => {
     if (nativeTheme.shouldUseDarkColors) {
-      nativeTheme.themeSource = 'dark'
+        nativeTheme.themeSource = 'dark'
     } else {
-      nativeTheme.themeSource = 'dark'
+        nativeTheme.themeSource = 'dark'
     }
     return nativeTheme.shouldUseDarkColors
-  });
+});
 
-  ipcMain.handle('dark-mode:system', () => {
+ipcMain.handle('dark-mode:system', () => {
     nativeTheme.themeSource = 'dark'
-  });
+});
 
 const NOTIFICATION_TITLE = 'OutLineApi'
 const NOTIFICATION_BODY = 'Welcome to OutLine!'
