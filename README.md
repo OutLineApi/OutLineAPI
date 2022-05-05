@@ -5,7 +5,7 @@ Welcome To OutlineAPI! This API Includes: AES Keys, Cosmetic Details, STW & BR N
 
 This API is made By:
 
-• Packet
-• Zinx
-• Bren
-• SplushFNBR 
+• Packet <br />
+• Zinx <br />
+• Bren <br />
+• SplushFNBR  <br />
