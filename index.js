@@ -1,6 +1,6 @@
 const express = require("express");
 const logger = require("./structs/logger");
-const runner = require("./.config/runner.json");
+const runner = require("./runner/runner.json");
 const Parser = require("./routes/Parser/Parser");
 const application = express();
 

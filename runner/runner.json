@@ -1,0 +1,8 @@
+{
+    "Builder": [
+        "BuilderUpdaters",
+        "BuilderTools",
+        "CoreManager",
+        "Parser"
+    ]
+}
