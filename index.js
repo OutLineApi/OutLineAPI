@@ -20,10 +20,12 @@ require("./routes/updaters/autoUpdater").Updater();
 // builder
 require("./routes/Manifests/Builder");
 
+// Builder Tools
+require("./routes/Builders/Tools/BuilderTools");
+
 // electron
 require("./electron/startup");
-
 application.listen(8000, () => {
-    logger.INFO("port: " + 8000);
+    logger.READY("Ready! Started Running on Port: " + 8000);
     logger.INFO(`Builders: ${runner.Builder}`)
 });

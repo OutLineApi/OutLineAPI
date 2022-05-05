@@ -11,14 +11,14 @@ createBuilder(init);
 createBuilderTool(init);
 createBuilderToolUpdater(init);
 
+logger.READY("Parser is now Ready!");
+
 function LoadManifestContent() {
     Create();
     init(LoadManifestContent.apply, {
         binder: Create()
     });
 }
-
-logger.WARNING("This isn't done yet, so if it doesn't work that's why");
 
 module.exports = manifestUpdater => {
     manifestUpdater.createBuilderToolUpdater(init);
