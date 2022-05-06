@@ -16,6 +16,6 @@ This API is made By:
 • if you want to build it do npm run make  <br />
 
 # Supported Devices
-• Windows 64
-• Window 32
-• Mac
+• Windows 64 <br />
+• Window 32  <br />
+• Mac  <br />
