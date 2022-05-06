@@ -5,15 +5,21 @@ const path = require("path");
 let ProgressInterval
 
 function createWindow() {
+    logger.READY("Electron is Ready!");
     const win = new BrowserWindow({
         width: 1050,
         height: 600,
+        frame: false,
+        titleBarStyle: "hidden",
+        titleBarOverlay: true,
         webPreferences: {
-            nodeIntegrationInWorker: true
+            nodeIntegrationInWorker: true,
+            spellcheck: true
         }
     });
     win.loadFile('./electron/index.html');
-    win.webContents.openDevTools()
+    win.blurWebView.bind();
+    // win.webContents.openDevTools()
     // const INCREMENT = 0.03
     // const INTERVAL_DELAY = 100
 
@@ -43,6 +49,17 @@ if (process.defaultApp) {
     app.setAsDefaultProtocolClient('electron-fiddle')
 }
 
+app.setUserTasks([
+    {
+        program: process.execPath,
+        arguments: "--new-window",
+        iconPath: process.execPath,
+        iconIndex: 0,
+        title: "New Window!",
+        description: "Create A New Window.",
+    }
+])
+
 menu.append(new MenuItem({
     label: "Window Config",
     submenu: [{
@@ -53,6 +70,7 @@ menu.append(new MenuItem({
         }
     }]
 }));
+
 Menu.setApplicationMenu(menu);;
 
 ipcMain.handle('dark-mode:toggle', () => {

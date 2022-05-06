@@ -2,7 +2,8 @@
     "ElectronID": null,
     "Supported": [
         "Windows64",
-        "Windows32"
+        "Windows32",
+        "MacOS"
     ],
     "ElectronToken": null
 }

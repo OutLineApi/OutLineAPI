@@ -8,10 +8,12 @@ options = {
     "Cyan": `\x1b[36m`,
     "INFO": "INFO -",
     "ERROR": "ERROR -",
-    "WARNING": "WARNING -"
+    "WARNING": "WARNING -",
+    "READY": "READY -"
 }
 
 module.exports = {
+    READY: message => console.log(`${options.Bright}${options.Green}${options.READY}`, options.Reset,message),
     INFO: message => console.log(`${options.Bright}${options.Cyan}${options.INFO}`, options.Reset,message),
     ERROR: message => console.log(`${options.Bright}${options.Red}${options.ERROR}`, options.Reset, message),
     WARNING: message => console.log(`${options.Bright}${options.Yellow}${options.WARNING}`, options.Reset, message)

@@ -1,5 +1,4 @@
 const logger = require("../../../structs/logger");
-const Builder = require("../../Manifests/Builder");
 const Parser = require("../../Parser/Parser");
 const { createBuilder, createBuilderTool } = require("../../updaters/manifestUpdater");
 const manifestUpdater = require("../../updaters/manifestUpdater");
@@ -13,6 +12,10 @@ RunWithElectron();
 init();
 ConfigInit();
 
+function Builder() {
+    createBuilderTool;
+}
+
 module.exports = manifestUpdater => {
     return manifestUpdater.createUpdater;
 }
@@ -21,7 +24,7 @@ function init() {
     Builder.toString().at().split(10).forEach(Build => {
         Build.includes(".manifest").valueOf(10)
     });
-    Builder.bind(Runner, {
+    Builder(Runner, {
         bind: Runner,
         output: ConfigInit()
     });

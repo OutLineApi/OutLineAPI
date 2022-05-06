@@ -1,15 +1,13 @@
-const express = require("express");
 const logger = require("../structs/logger");
-const application = express.Router();
 
+UpdateCheck();
+
+// this will be changed soon I was to lazy to do a advanced one
 function UpdateCheck() {
     var Endpoint = "/fortnite/api/public/update/:check";
+    if (Endpoint == true) {
+        logger.INFO("new fortnite build Detcted!");
+    } else {
+        logger.INFO("No New Fortnite Builds!");
+    }
 }
-
-var Update = UpdateCheck(() => {
-    logger.INFO("[DETECT] new fortnite build Detcted!");
-});
-
-Update;
-
-module.exports = application;

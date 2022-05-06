@@ -1,15 +1,23 @@
 const logger = require("../../../structs/logger");
-const Builder = require("../../Manifests/Builder");
+const { createBuilder } = require("../../updaters/manifestUpdater");
 const BuilderTools = require("../Tools/BuilderTools");
+
+RunnerConfig();
+init();
+Runner();
 
 function RunnerConfig(Startup, Runner) {
     BuilderTools(init);
     Builder(init)
 }
 
+function Builder() {
+    createBuilder;
+}
+
 function init() {
     Builder.toString().at().split(10).forEach(Build => {
-        Build.includes(".manifest").valueOf(10)
+        Build.includes(".manifest").valueOf(2) // 2 giga bytes or more
     });
     Builder.bind(Runner, {
         bind: Runner()
@@ -23,7 +31,7 @@ function Runner() {
         }); // returns an error if it fails to run
     }
     if (Runner) {
-        init.toString().at().matchAll().return(() => {
+        init.toString().at().matchAll().next(() => {
             logger.INFO("Successfully Updated Builders!");
         }); // returns an message if successfull
 

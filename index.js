@@ -4,7 +4,7 @@ const runner = require("./runner/runner.json");
 const Parser = require("./routes/Parser/Parser");
 const application = express();
 
-require("./routes/updateCheck");
+// API Imports
 require("./routes/services/api")(application);
 require("./routes/services/auth")(application);
 require("./routes/services/accountId")(application);
@@ -23,8 +23,15 @@ require("./routes/Manifests/Builder");
 // Builder Tools
 require("./routes/Builders/Tools/BuilderTools");
 
+// Builder Updaters
+require("./routes/Builders//BuilderUpdaters/BuilderUpdaters");
+
+// updateCheck
+require("./routes/updateCheck");
+
 // electron
 require("./electron/startup");
+
 application.listen(8000, () => {
     logger.READY("Ready! Started Running on Port: " + 8000);
     logger.INFO(`Builders: ${runner.Builder}`)
