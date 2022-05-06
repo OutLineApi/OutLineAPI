@@ -19,3 +19,6 @@ This API is made By:
 • Windows 64 <br />
 • Window 32  <br />
 • Mac  <br />
+
+# Links
+• Discord: https://discord.gg/XcKwmYg5MV
