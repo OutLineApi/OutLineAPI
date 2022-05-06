@@ -15,5 +15,7 @@ This API is made By:
 • then do npm start if you want to start it  <br />
 • if you want to build it do npm run make  <br />
 
-# Support
-• This Supports => Windows 64 bit & 32 Bit also MacBook "MIGHT HAVE BUGS"
+# Supported Devices
+• Windows 64
+• Window 32
+• Mac
