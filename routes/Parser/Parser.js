@@ -1,11 +1,12 @@
 const BuilderTools = require("../Builders/Tools/BuilderTools");
-const BuilderUpdater = require("../Builders/BuilderUpdaters/BuilderUpdaters");
 const Builder = require("../Manifests/Builder");
 const { createBuilder, createBuilderTool, createBuilderToolUpdater } = require("../updaters/manifestUpdater");
 const { init } = require("express/lib/application");
 const manifestUpdater = require("../updaters/manifestUpdater");
 const config = require("../../config.json");
 const logger = require("../../structs/logger");
+
+const fs = require("fs");
 
 createBuilder(init);
 createBuilderTool(init);
@@ -16,13 +17,11 @@ logger.READY("Parser is now Ready!");
 function LoadManifestContent() {
     Create();
     init(LoadManifestContent.apply, {
-        binder: Create()
+        Make: Create()
     });
 }
 
-module.exports = manifestUpdater => {
-    manifestUpdater.createBuilderToolUpdater(init);
-}
+manifestUpdater.createBuilderToolUpdater(init);
 
 function ParserUpdater() {
     Create(); // Adding create here so we can actually update this

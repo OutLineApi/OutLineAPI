@@ -24,7 +24,7 @@ require("./routes/Manifests/Builder");
 require("./routes/Builders/Tools/BuilderTools");
 
 // Builder Updaters
-require("./routes/Builders//BuilderUpdaters/BuilderUpdaters");
+require("./routes/Builders/BuilderUpdaters/BuilderUpdaters");
 
 // updateCheck
 require("./routes/updateCheck");
@@ -34,5 +34,5 @@ require("./electron/startup");
 
 application.listen(8000, () => {
     logger.READY("Ready! Started Running on Port: " + 8000);
-    logger.INFO(`Builders: ${runner.Builder}`)
+    logger.INFO(`Builders: ${runner.Build}`)
 });

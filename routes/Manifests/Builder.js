@@ -12,8 +12,17 @@ Load();
 Updater();
 LoadParser();
 
+PreLoad();
+
+require("./Manifest")
+
 function Builder() {
     createBuilder;
+}
+
+function PreLoad() {
+    var PreLoad = [];
+    PreLoad == false;
 }
 
 // Manifest Loader / Handler
@@ -22,14 +31,10 @@ function LoadParser() {
     Parser.BuildParser;
 }
 function Load() {
-    // fs.readdirSync(`${__dirname}/Manifests`).forEach(manifests => {
-    //     require(`./Manifests/${manifests}`);
-    // }); // FUCK THIS TO MUCH PAINIINININININIININ
-    // Load(init);
     LoadParser(Builder);
     if (Load) {
         Builder(Build => {
-            Build.includes(".manifest")
+            Build.includes(".json")
         });
     }
     if (!Load) {
