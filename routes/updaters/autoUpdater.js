@@ -9,7 +9,7 @@ function errorManager(code, numericCode, message, service, intent, vars) {
 module.exports = {
     Updater() {
         return initUpdater({
-
+            Log: logger.READY("Updater is Ready!")
         });
     },
     Error() {

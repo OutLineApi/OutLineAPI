@@ -7,11 +7,11 @@ let ProgressInterval
 function createWindow() {
     logger.READY("Electron is Ready!");
     const win = new BrowserWindow({
-        width: 1050,
+        width: 1060,
         height: 600,
-        frame: false,
-        titleBarStyle: "hidden",
-        titleBarOverlay: true,
+        frame: true,
+        titleBarStyle: "customButtonsOnHover",
+        titleBarOverlay: false,
         webPreferences: {
             nodeIntegrationInWorker: true,
             spellcheck: true
@@ -20,24 +20,10 @@ function createWindow() {
     win.loadFile('./electron/index.html');
     win.blurWebView.bind();
     // win.webContents.openDevTools()
-    // const INCREMENT = 0.03
-    // const INTERVAL_DELAY = 100
-
-    // let c = 0;
-
-    // ProgressInterval = setInterval(() => {
-    //     win.setProgressBar(c);
-    //     if (c < 2) {
-    //         c += INCREMENT
-    //     } else {
-    //         c = (INCREMENT * 5)
-    //     }
-    // }, INTERVAL_DELAY);
+    win.webContents.debugger.on("message", () => {
+        logger.INFO("Debugging is Enabled!");
+    });
 }
-
-// app.on('before-quit', () => {
-//     clearInterval(ProgressInterval)
-// });
 
 const menu = new Menu();
 
@@ -61,10 +47,10 @@ app.setUserTasks([
 ])
 
 menu.append(new MenuItem({
-    label: "Window Config",
+    label: "Config",
     submenu: [{
-        role: "help",
-        accelerator: process.platform === "darwin" ? "Alt+Cmd+I" : "Alt+Shift+I",
+        role: "Press Me",
+        accelerator: process.platform === "darwin" ? "Alt+Cmd+0" : "Alt+0",
         click: () => {
             logger.INFO("Button Pressed!");
         }

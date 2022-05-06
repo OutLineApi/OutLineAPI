@@ -12,6 +12,8 @@ createBuilder(init);
 createBuilderTool(init);
 createBuilderToolUpdater(init);
 
+manifestUpdater.createBuilderToolUpdater(init);
+
 logger.READY("Parser is now Ready!");
 
 function LoadManifestContent() {
@@ -23,36 +25,76 @@ function LoadManifestContent() {
 
 manifestUpdater.createBuilderToolUpdater(init);
 
-function ParserUpdater() {
-    Create(); // Adding create here so we can actually update this
-} // will get it's own file at some point
-
-function Parser() {
-    Create() // creates the Parser
-    createBuilderToolUpdater(Create, {
-        update: ParserUpdater(),
-        LoadContent: LoadManifestContent()
-    });
-    if (!LoadManifestContent) {
-        Builder.toString().at().split(1).forEach((err) => {
-            return logger.ERROR(err);
-        }); // outputs a error if failed to load content
+class Parser {
+    constructor() {
+        this.files = fs.readdirSync(".");
     }
 
-    if (LoadManifestContent) {
-        Builder.toString().at().split(1).forEach(() => {
-            return logger.INFO("Successfully Loaded Manifest Content!");
-        }); // outputs if it successfully loaded content
+    getParsedManifest() {
+        return Parser(this.files);
+    }
+
+    LoadManifestContent() {
+        Create();
+        init(LoadManifestContent.apply, {
+            Make: Create()
+        });
+    }
+    
+        parse() {
+        Create() // creates the Parser
+        createBuilderToolUpdater(Create, {
+            update: ParserUpdater(),
+            LoadContent: LoadManifestContent()
+        });
+        if (!LoadManifestContent) {
+            Builder.toString().at().split(1).forEach((err) => {
+                return logger.ERROR(err);
+            }); // outputs a error if failed to load content
+        }
+    
+        if (LoadManifestContent) {
+            Builder.toString().at().split(1).forEach(() => {
+                return logger.INFO("Successfully Loaded Manifest Content!");
+            }); // outputs if it successfully loaded content
+        }
+    }
+    
+        ParserUpdater() {
+        Create(); // Adding create here so we can actually update this
+        } // will get it's own file at some point
+    
+        parse() {
+        Create() // creates the Parser
+        createBuilderToolUpdater(Create, {
+            update: ParserUpdater(),
+            LoadContent: LoadManifestContent()
+        });
+        if (!LoadManifestContent) {
+            Builder.toString().at().split(1).forEach((err) => {
+                return logger.ERROR(err);
+            }); // outputs a error if failed to load content
+        }
+    
+        if (LoadManifestContent) {
+            Builder.toString().at().split(1).forEach(() => {
+                return logger.INFO("Successfully Loaded Manifest Content!");
+            }); // outputs if it successfully loaded content
+        }
+    }
+    
+        Create() {
+        Builder(init);
+        createBuilderTool(init, {
+            loggerFile: [require("../../structs/logger")], 
+            init: Builder(config.CoreManager),
+        }); // creates the Parser
     }
 }
 
-function Create() {
-    Builder(init);
-    createBuilderTool(init, {
-        loggerFile: [require("../../structs/logger")], 
-        init: Builder(config.CoreManager),
-    }); // creates the Parser
-}
+const ParseFiles = new Parser();
+
+module.exports = { ParseFiles }
 
 module.exports = {
     createParser() {
