@@ -1,9 +1,0 @@
-{
-    "Build": [
-        "BuilderUpdaters",
-        "BuilderTools",
-        "CoreManager",
-        "Parser",
-        "Manifest"
-    ]
-}
