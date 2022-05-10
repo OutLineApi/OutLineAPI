@@ -1,9 +1,0 @@
-{
-    "ElectronID": 69235500,
-    "Supported": [
-        "Windows64",
-        "Windows32",
-        "Mac"
-    ],
-    "ElectronToken": 1
-}
