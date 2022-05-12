@@ -12,9 +12,19 @@ options = {
     "READY": "READY -"
 }
 
+function GetCurrentTime() {
+    const time =
+    new Date().getHours() +
+    ":" +
+    new Date().getMinutes() +
+    ":" +
+    new Date().getSeconds();
+    return `[${time}]`;
+}
+
 module.exports = {
-    READY: message => console.log(`${options.Bright}${options.Green}${options.READY}`, options.Reset,message),
-    INFO: message => console.log(`${options.Bright}${options.Cyan}${options.INFO}`, options.Reset,message),
-    ERROR: message => console.log(`${options.Bright}${options.Red}${options.ERROR}`, options.Reset, message),
-    WARNING: message => console.log(`${options.Bright}${options.Yellow}${options.WARNING}`, options.Reset, message)
+    READY: message => console.log(`${options.Yellow}${GetCurrentTime()} ${options.Bright}${options.Cyan}${options.READY}`, options.Reset,message),
+    INFO: message => console.log(`${options.Yellow}${GetCurrentTime()} ${options.Green}${options.INFO}`, options.Reset,message),
+    ERROR: message => console.log(`${options.Yellow}${GetCurrentTime()} ${options.Bright}${options.Red}${options.ERROR}`, options.Reset, message),
+    WARNING: message => console.log(`${options.Yellow}${GetCurrentTime()} ${options.Bright}${options.Yellow}${options.WARNING}`, options.Reset, message)
 }

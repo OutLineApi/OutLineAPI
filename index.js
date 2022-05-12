@@ -2,6 +2,7 @@ const express = require("express");
 const logger = require("./structs/logger");
 const runner = require("./runner/runner.json");
 const application = express();
+const { Schema } = require("./data/save.json");
 
 // API Imports
 require("./routes/services/Store");
@@ -28,13 +29,12 @@ require("./routes/Builders/Tools/BuilderTools");
 // Builder Updaters
 require("./routes/Builders/BuilderUpdaters/BuilderUpdaters");
 
-// updateCheck
-require("./routes/updateCheck");
-
 // electron
 require("./electron/startup");
 
+// Start the API & Log Builders feel free to change the port
 application.listen(8000, () => {
     logger.READY("Ready! Started Running on Port: " + 8000);
-    logger.INFO(`Builders: ${runner.Build}`)
+    logger.INFO(`Builders: ${runner.Build}`);
+    logger.INFO(`Loaded Schema: ${Schema}`)
 });

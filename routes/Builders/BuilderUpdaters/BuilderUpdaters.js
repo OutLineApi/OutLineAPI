@@ -16,7 +16,7 @@ function Builder() {
 }
 
 function init() {
-    Builder.toString().at().split(10).forEach(Build => {
+    Builder.toString().at().split(" ").forEach(Build => {
         Build.includes(".manifest").valueOf(2) // 2 giga bytes or more
     });
     Builder.bind(Runner, {

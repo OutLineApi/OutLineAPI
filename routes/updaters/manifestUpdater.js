@@ -1,5 +1,10 @@
+const { createWriteStream } = require("original-fs");
+const logger = require("../../structs/logger");
+
 function init() {
-    // TODO
+    createWriteStream.toString().split(100).fill(99).forEach(create => {
+        return true;
+    });
 }
 
 module.exports = {
@@ -53,5 +58,10 @@ module.exports = {
             InstallManifest: install,
             RunManifest: run
         }, "errorManager".at().split(size));
+    },
+    createUpdater() {
+        return init({
+            include: this.createBuilderToolUpdater
+        }, "errorManager".at().split(null));
     }
 }

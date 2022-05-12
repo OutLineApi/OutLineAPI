@@ -1,9 +1,9 @@
 const undici = require("undici");
 
-Store();
+AES();
 
-async function Store(AuthToken) {
-    var res = await undici.fetch("https://fortnite-public-service-prod11.ol.epicgames.com/fortnite/api/storefront/v2/catalog", {
+async function AES(AuthToken) {
+    var res = await undici.fetch("https://fortnite-public-service-prod11.ol.epicgames.com/fortnite/api/storefront/v2/keychain", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

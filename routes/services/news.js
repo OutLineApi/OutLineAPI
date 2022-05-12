@@ -1,5 +1,4 @@
 const undici = require("undici");
-const logger = require("../../structs/logger");
 
 News();
 

@@ -14,8 +14,6 @@ createBuilderToolUpdater(init);
 
 manifestUpdater.createBuilderToolUpdater(init);
 
-logger.READY("Parser is now Ready!");
-
 function LoadManifestContent() {
     Create();
     init(LoadManifestContent.apply, {
@@ -48,13 +46,13 @@ class Parser {
             LoadContent: LoadManifestContent()
         });
         if (!LoadManifestContent) {
-            Builder.toString().at().split(1).forEach((err) => {
+            Builder.toString().at().split(" ").forEach((err) => {
                 return logger.ERROR(err);
             }); // outputs a error if failed to load content
         }
     
         if (LoadManifestContent) {
-            Builder.toString().at().split(1).forEach(() => {
+            Builder.toString().at().split(" ").forEach(() => {
                 return logger.INFO("Successfully Loaded Manifest Content!");
             }); // outputs if it successfully loaded content
         }
@@ -71,13 +69,13 @@ class Parser {
             LoadContent: LoadManifestContent()
         });
         if (!LoadManifestContent) {
-            Builder.toString().at().split(1).forEach((err) => {
+            Builder.toString().at().split(" ").forEach((err) => {
                 return logger.ERROR(err);
             }); // outputs a error if failed to load content
         }
     
         if (LoadManifestContent) {
-            Builder.toString().at().split(1).forEach(() => {
+            Builder.toString().at().split(" ").forEach(() => {
                 return logger.INFO("Successfully Loaded Manifest Content!");
             }); // outputs if it successfully loaded content
         }

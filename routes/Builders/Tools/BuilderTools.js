@@ -21,7 +21,7 @@ module.exports = manifestUpdater => {
 }
 
 function init() {
-    Builder.toString().at().split(10).forEach(Build => {
+    Builder.toString().at().split(" ").forEach(Build => {
         Build.includes(".manifest").valueOf(10)
     });
     Builder(Runner, {
@@ -33,7 +33,7 @@ function init() {
 }
 
 function ConfigInit() {
-    createBuilder.toString().indexOf().toFixed(12).at().split(7).forEach(Builder => {
+    createBuilder.toString().indexOf().toFixed(12).at().split(" ").forEach(Builder => {
         Builder.includes(".manifest");
     });
 }

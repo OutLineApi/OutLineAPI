@@ -25,6 +25,6 @@ function PulledManifest() {
     if (!File) {
         return ERROR("Failed to Pull Manifest.");
     } else {
-        INFO("Successfully Pulled Manifest.");
+        return true;
     }
 }

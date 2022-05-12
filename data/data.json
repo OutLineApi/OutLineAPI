@@ -5,5 +5,8 @@
         "Windows32",
         "Mac"
     ],
-    "ElectronToken": 1
+    "ElectronToken": 1,
+    "SocialLinks": [
+        "https://discord.gg/XcKwmYg5MV"
+    ]
 }
