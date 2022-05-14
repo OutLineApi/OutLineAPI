@@ -7,28 +7,64 @@
     <link rel="stylesheet" type="text/css" href="./styles.css">
 </head>
 <body>
-    <nav>
-        <div class="left-nav">
-            <span class="nav-link">
-                &#x2630
-            </span>
+    <div id="sideBar" class="sideBar" style="width: 0px;">
+        <div class="closestuff">
+            <a href="#" onclick="closeNav()">&times;</a>
         </div>
-
-        <div class="right-narv">
-            <span class="nav-link" id="minimize">
-                &minus;
-            </span>
-            <span class="nav-link" id="exit">
-                &#10006
-            </span>
-            
-        </div>    
-    </nav>
-
-    <h1 style="text-align: center; font-family: Arial, Helvetica, sans-serif;" style="font-size: larger;" style="-webkit-app-region:no-drag;">Welcome to OutLine API</h1>
-    <p style="text-align: center; font-family: Arial, Helvetica, sans-serif;">
-        An Advanced FortniteAPI <span id="outline-api"></span>
-    </p>
-
+        <div class="sideBar-items">
+            <a href="#">Home</a>
+            <a href="#">Home</a>
+            <a href="#">Home</a>
+            <a href="#">Home</a>
+            <a href="#">Home</a>
+            <a href="#">Home</a> 
+        </div>
+    </div> 
+    <!-- This is for the main stuff -->
+    <main id="main">
+        <div class="nav" id="saddd">
+            <div class="left-nav">
+                <span class="nav-link" id="burgerbutton" onclick="openNav()">
+                    &#x2630
+                </span>
+            </div>
+    
+            <div class="right-narv">
+                <span class="nav-link" id="minimize">
+                    &minus;
+                </span>
+                <span class="nav-link" id="exit">
+                    &#10006
+                </span>
+                
+            </div>   
+       
+        </div>
+        <h1 style="text-align: center; font-family: Arial, Helvetica, sans-serif;" style="font-size: larger;" style="-webkit-app-region:no-drag;">Welcome to OutLine API</h1>
+        <p style="text-align: center; font-family: Arial, Helvetica, sans-serif;">
+            An Advanced FortniteAPI <span id="outline-api"></span>
+        </p>
+    </main>
+<script>
+    function openNav(){
+        document.getElementById("sideBar").style.width = "230px";
+        document.getElementById("main").style.marginLeft = "230px";
+        document.getElementById("burgerbutton").style.display = "none";
+    }
+    function closeNav(){
+        document.getElementById("sideBar").style.width = "0px";
+        document.getElementById("main").style.marginLeft = "0";
+        document.getElementById("burgerbutton").style.display = "unset";
+    }
+    document.addEventListener('keyup', event => {
+    if (event.key === 'Escape' || event.keyCode === 27) {
+        if(document.getElementById("sideBar").style.width == "0px"){
+            openNav();
+        }else{
+            closeNav();
+        }
+    }
+    });
+</script>
 </body>
 </html>
