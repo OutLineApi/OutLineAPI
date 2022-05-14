@@ -1,7 +1,7 @@
 const { app, BrowserWindow, Notification, ipcMain, nativeTheme, Menu, MenuItem, shell } = require('electron');
 const logger = require('../structs/logger');
 const path = require("path");
-
+const ipc = ipcMain
 function createWindow() {
     logger.READY("Electron is Ready!");
     const win = new BrowserWindow({
@@ -10,20 +10,25 @@ function createWindow() {
         frame: false,
         titleBarStyle: "customButtonsOnHover",
         titleBarOverlay: true,
-        show: false,
         webPreferences: {
-            nodeIntegrationInWorker: true,
+            enableRemoteModule: true,
+            nodeIntegration: false,
             spellcheck: true,
             preload: (__dirname + "/javascript/preload.js"),
             devTools: true
         }
     });
-    win.on("ready-to-show", win.show)
     win.loadFile('./electron/web/index.html');
     win.blurWebView.bind();
     win.webContents.openDevTools()
     win.webContents.debugger.on("message", () => {
-        logger.INFO("Debugging is Enabled!");
+        logger.INFO("Debugging is Enabled!!");
+    });
+    ipc.on('close-app', () => {
+        win.close();
+    });
+    ipc.on('min-app', () => {
+        win.minimize();
     });
 }
 
