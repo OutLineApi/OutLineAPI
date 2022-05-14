@@ -8,7 +8,7 @@ This API is made By:
 • Packet <br />
 • Zinx <br />
 • Bren <br />
-• SplushFNBR  <br />
+• SpushFNBR  <br />
 
 # Setup
 • First do npm install  <br />
