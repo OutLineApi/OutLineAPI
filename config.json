@@ -1,4 +1,7 @@
 {
-    "endpointStart": "/glow/api",
-    "CoreManager": {"Size": null, "Manager": null}
+    "CoreManager": {"Size": null, "Manager": null},
+    "errorManager": {
+        "require": "(`./routes/errorManager:CoreManager`)",
+        "return": "(`${null}`)"
+    }
 }

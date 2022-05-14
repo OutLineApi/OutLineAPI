@@ -10,6 +10,7 @@ function createWindow() {
         frame: false,
         titleBarStyle: "customButtonsOnHover",
         titleBarOverlay: true,
+        show: false,
         webPreferences: {
             nodeIntegrationInWorker: true,
             spellcheck: true,
@@ -17,6 +18,7 @@ function createWindow() {
             devTools: true
         }
     });
+    win.on("ready-to-show", win.show)
     win.loadFile('./electron/web/index.html');
     win.blurWebView.bind();
     win.webContents.openDevTools()
