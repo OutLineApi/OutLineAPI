@@ -17,7 +17,7 @@ This API is made By:
 
 # Supported Devices
 • Windows 64 <br />
-• Window 32  <br />
+• Windows 32  <br />
 • Mac  <br />
 
 # Links
