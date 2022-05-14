@@ -25,8 +25,3 @@ window.addEventListener('DOMContentLoaded', () => {
 contextBridge.exposeInMainWorld("app", api);
 
 
-module.exports = application => {
-    application.get("/e", (req,res) => {
-        res.send("E")
-    })
-}
