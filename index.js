@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path")
 const logger = require("./structs/logger");
 const runner = require("./runner/runner.json");
 const application = express();
@@ -30,7 +31,11 @@ require("./routes/Builders/Tools/BuilderTools");
 require("./routes/Builders/BuilderUpdaters/BuilderUpdaters");
 
 // electron
-require("./electron/startup");
+require("./electron/startup")(application);
+
+application.use(function(req, res) {
+    res.sendFile(path.join(__dirname+"/electron/web/404/index.html"))
+});
 
 // Start the API & Log Builders feel free to change the port
 application.listen(8000, () => {

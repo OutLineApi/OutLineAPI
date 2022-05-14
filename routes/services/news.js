@@ -7,7 +7,6 @@ async function News() {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${null}`
         }
     });
     return res.json();

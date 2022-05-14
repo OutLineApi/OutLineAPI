@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>OutLine API</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+<body>
+    <h1 style="text-align: center; font-family: Arial, Helvetica, sans-serif;" style="font-size: larger;" style="-webkit-app-region:no-drag;">404 page not found</h1>
+    <h2 style="text-align: center; font-family: Arial, Helvetica, sans-serif; text-decoration: none; color: black;" ><a href="test.html" style="text-align: center; font-family: Arial, Helvetica, sans-serif; text-decoration: none; color: black;">Go back to home</a></h2>
+<script>
+    function openNav(){
+        document.getElementById("sideBar").style.width = "230px";
+        document.getElementById("main").style.marginLeft = "230px";
+        document.getElementById("burgerbutton").style.display = "none";
+    }
+    function closeNav(){
+        document.getElementById("sideBar").style.width = "0px";
+        document.getElementById("main").style.marginLeft = "0";
+        document.getElementById("burgerbutton").style.display = "unset";
+    }
+    document.addEventListener('keyup', event => {
+    if (event.key === 'Escape' || event.keyCode === 27) {
+        if(document.getElementById("sideBar").style.width == "0px"){
+            openNav();
+        }else{
+            closeNav();
+        }
+    }
+    });
+</script>
+</body>
+</html>

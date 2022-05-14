@@ -99,3 +99,11 @@ app.on('activate', () => {
         createWindow()
     }
 })
+
+
+
+module.exports = application => {
+    application.get("/e", (req,res) => {
+        res.send("E")
+    })
+}
