@@ -1,4 +1,5 @@
 const { app, BrowserWindow, Notification, ipcMain, nativeTheme, Menu, MenuItem, shell } = require('electron');
+const express = require("express")
 const logger = require('../structs/logger');
 const path = require("path");
 const ipc = ipcMain
@@ -19,6 +20,7 @@ function createWindow() {
         }
     });
     win.loadFile('./electron/web/index.html');
+    win.loadURL("http://localhost:8000/")
     win.blurWebView.bind();
     win.webContents.openDevTools()
     win.webContents.debugger.on("message", () => {
@@ -102,8 +104,31 @@ app.on('activate', () => {
 
 
 
-module.exports = application => {
-    application.get("/e", (req,res) => {
-        res.send("E")
+module.exports = (application, path) => {
+    application.get("/", (req,res) => {
+        res.sendFile(path.join(__dirname+"/web/html/home.html"))
     })
+
+    application.get("/AES", (req,res) => {
+        res.sendFile(path.join(__dirname+"/web/html/aes.html"))
+    })
+
+    application.get("/playlist", (req,res) => {
+        res.sendFile(path.join(__dirname+"/web/html/playlist.html"))
+    })
+
+    application.get("/shop", (req,res) => {
+        res.sendFile(path.join(__dirname+"/web/html/shop.html"))
+    })
+
+    application.get("/news", (req,res) => {
+        res.sendFile(path.join(__dirname+"/web/html/news.html"))
+    })
+
+    application.get("/status", (req,res) => {
+        res.sendFile(path.join(__dirname+"/web/html/status.html"))
+    })
+
+
+    application.use("/css", express.static(__dirname+"/web/css"))
 }

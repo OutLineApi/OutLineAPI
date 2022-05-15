@@ -8,16 +8,16 @@ This API is made By:
 • Packet <br />
 • Zinx <br />
 • Bren <br />
-• SpushFNBR  <br />
+• SplushFNBR  <br />
 
 # Setup
 • First do npm install  <br />
 • then do npm start if you want to start it  <br />
-• if you want to build it do npm run pack  <br />
+• if you want to build it do npm run make  <br />
 
 # Supported Devices
 • Windows 64 <br />
-• Windows 32  <br />
+• Window 32  <br />
 • Mac  <br />
 
 # Links

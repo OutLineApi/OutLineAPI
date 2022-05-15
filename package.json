@@ -1,28 +1,52 @@
 {
-  "name": "outline-api",
-  "version": "0.0.1-beta",
+  "name": "api",
+  "version": "1.0.0",
   "description": "A Fortnite APi",
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "pack": "electron-builder"
-  },
-  "build": {
-    "appId": "com.packet.outline.api",
-    "icon": "outline.ico",
-    "generateUpdatesFilesForAllChannels": true,
-    "mac": {
-      "category": "com.packet.outline.api.category.type"
-    }
+    "nodemon": "nodemon --watch index.js --exec npm start",
+    "make": "electron-forge package"
   },
   "author": "Packet#9999",
   "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "tron_forge"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  },
   "dependencies": {
     "builder": "^5.0.0",
+    "electron": "^18.2.0",
+    "electron-forge": "^5.2.4",
     "electron-squirrel-startup": "^1.0.0",
     "express": "^4.18.1",
     "jsonwebtoken": "^8.5.1",
-    "undici": "^5.1.1"
+    "nodemon": "^2.0.16",
+    "original-fs": "^1.1.0",
+    "undici": "^5.2.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.50",
@@ -31,7 +55,6 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.50",
     "@electron-forge/maker-zip": "^6.0.0-beta.50",
     "devtron": "^1.4.0",
-    "electron": "^18.2.0",
-    "electron-builder": "^23.0.3"
+    "electron": "^18.2.0"
   }
 }

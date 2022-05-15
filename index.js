@@ -31,7 +31,7 @@ require("./routes/Builders/Tools/BuilderTools");
 require("./routes/Builders/BuilderUpdaters/BuilderUpdaters");
 
 // electron
-require("./electron/startup")(application);
+require("./electron/startup")(application, path);
 
 application.use(function(req, res) {
     res.sendFile(path.join(__dirname+"/electron/web/404/index.html"))
