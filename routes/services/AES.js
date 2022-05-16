@@ -1,14 +1,29 @@
-const undici = require("undici");
+const { application } = require("express");
+const request = require("request");
 
-AES();
+// none of these shouldnt need headers
+module.exports = (application) => {
 
-async function AES(AuthToken) {
-    var res = await undici.fetch("https://fortnite-public-service-prod11.ol.epicgames.com/fortnite/api/storefront/v2/keychain", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${AuthToken}`
+    application.get("/api/v2/keychain", (req,res) => {
+        var accessToken = {
+            "method": "GET",
+            "url": "http://localhost:8000/api/v1/accesstoken-ios"
         }
-    });
-    return res.json();
+        request(accessToken, function(error, response) {
+          if (error) throw new Error(error);
+          var access_token = JSON.parse(response.body).access_token;
+            var timeline = {
+                "method": "GET",
+                "url": "https://fortnite-public-service-prod11.ol.epicgames.com/fortnite/api/storefront/v2/keychain",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${access_token}`
+                }
+            }
+            request(timeline, function(error, response) {
+                res.json(JSON.parse(response.body))
+            })
+        })
+    })
+   
 }

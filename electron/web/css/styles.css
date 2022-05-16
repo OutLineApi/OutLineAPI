@@ -1,5 +1,5 @@
 @media (prefers-color-scheme: dark) {
-    body { background: white; color: darkslateblue; -webkit-app-region: no-drag;}
+    body { background: white; color: #32333d; -webkit-app-region: no-drag;}
 }
 
 body {
@@ -9,7 +9,7 @@ body {
     max-width: 100%;
     box-sizing: border-box;
     font-family: "Ubuntu", sans-serif;
-    background-color: darkslateblue;
+    background-color: #32333d;
     color: white;
 }
 
@@ -103,7 +103,7 @@ html {
     right: 0;
     top: 0;
     bottom: 0;
-    background: darkslateblue;
+    background: #333131;
 }
 button {
     -webkit-app-region: no-drag;
@@ -125,7 +125,7 @@ html {
     right: 0;
     top: 0;
     bottom: 0;
-    background: darkslateblue;
+    background: #333131;
     -webkit-app-region: no-drag;
 }
 button:hover {
@@ -158,7 +158,7 @@ html {
     right: 0;
     top: 0;
     bottom: 0;
-    background: darkslateblue;
+    background: #32333d;
     -webkit-app-region: no-drag;
 }
 button {

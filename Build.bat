@@ -1,2 +1,2 @@
 npm run pack
-cmd /k
+pause

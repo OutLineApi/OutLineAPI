@@ -1,13 +1,20 @@
-const undici = require("undici");
+const { application } = require("express");
+const request = require("request");
 
-News();
+// none of these shouldnt need headers
+module.exports = (application) => {
+    // br news
+    application.get("/api/v1/news/br", async (req,res) => {
+        request("https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game/battleroyalenews", function(error, response) {
+            res.json(JSON.parse(response.body, null, 2));
+        })
+    })
 
-async function News() {
-    var res = await undici.fetch("https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        }
-    });
-    return res.json();
+
+     // Fortnite-Game
+      application.get("/api/v1/news", async (req,res) => {
+        request("https://fortnitecontent-website-prod07.ol.epicgames.com/content/api/pages/fortnite-game", function(error, response) {
+            res.json(JSON.parse(response.body, null, 2));
+        })
+    })
 }

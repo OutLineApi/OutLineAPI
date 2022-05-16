@@ -7,8 +7,11 @@ const { Schema } = require("./data/save.json");
 
 // API Imports
 require("./routes/services/Store");
-require("./routes/services/news");
-require("./routes/services/playlists");
+require("./routes/services/AES")(application);
+require("./routes/services/news")(application);
+require("./routes/services/playlists")(application);
+require("./routes/services/status")(application);
+require("./routes/services/access-token")(application);
 
 // Parser
 require("./routes/Parser/Parser");
