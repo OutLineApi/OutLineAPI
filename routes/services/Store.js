@@ -1,14 +1,16 @@
-const undici = require("undici");
+const { application } = require("express");
+const request = require("request");
 
-Store();
+module.exports = (application) => {
+    application.get("/api/storefront/catalog", async (req,res) => {
+        request("https://fortnite-public-service-prod11.ol.epicgames.com/fortnite/api/storefront/v2/catalog", function(error, response) {
+            res.json(JSON.parse(response.body, null, 2));
+        })
+    })
 
-async function Store(AuthToken) {
-    var res = await undici.fetch("https://fortnite-public-service-prod11.ol.epicgames.com/fortnite/api/storefront/v2/catalog", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${AuthToken}`
-        }
-    });
-    return res.json();
+      application.get("/api/v1/store", async (req,res) => {
+        request("https://fortnite-public-service-prod11.ol.epicgames.com/fortnite/api/storefront/v2/catalog", function(error, response) {
+            res.json(JSON.parse(response.body, null, 2));
+        })
+    })
 }

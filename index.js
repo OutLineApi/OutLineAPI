@@ -5,44 +5,42 @@ const runner = require("./runner/runner.json");
 const application = express();
 const { Schema } = require("./data/save.json");
 
-// API Imports
-require("./routes/services/Store");
-require("./routes/services/AES")(application);
-require("./routes/services/news")(application);
-require("./routes/services/playlists")(application);
-require("./routes/services/status")(application);
-require("./routes/services/access-token")(application);
+class API {
+    constructor() {
+        this.express = express;
+        this.path = path;
+        this.logger = logger;
+        this.runner = runner;
+        this.application = application;
+        this.Schema = Schema;
 
-// Parser
-require("./routes/Parser/Parser");
+        this.application.listen(8000, () => {
+            logger.READY("Started running on port : " + 8000);
+            logger.INFO(`Builders: ${runner.Build}`);
+            logger.INFO(`Loaded Schema: ${Schema}`)
+        });
 
-// auto updater
-require("./routes/updaters/autoUpdater").Error();
-require("./routes/updaters/autoUpdater").Updater();
-require("./routes/updaters/autoUpdater");
+        // this.application.use(function (req, res) {
+        //     res.sendFile(path.join(__dirname + "/electron/web/404/index.html"))
+        // });
 
-// builder
-require("./routes/Manifests/Builder");
+        require("./routes/services/Store")(application);
+        require("./routes/services/AES")(application);
+        require("./routes/services/news")(application);
+        require("./routes/services/playlists")(application);
+        require("./routes/services/status")(application);
+        require("./routes/services/access-token")(application);
+        require("./routes/Parser/Parser");
+        require("./routes/updaters/autoUpdater").Error();
+        require("./routes/updaters/autoUpdater").Updater();
+        require("./routes/updaters/autoUpdater");
+        require("./routes/Manifests/Builder");
+        require("./routes/updaters/manifestUpdater");
+        require("./routes/Builders/Tools/BuilderTools");
+        require("./routes/Builders/BuilderUpdaters/BuilderUpdaters");
+        require("./electron/startup")(application, path);
+    }
+}
 
-// manifestUpdater
-require("./routes/updaters/manifestUpdater");
-
-// Builder Tools
-require("./routes/Builders/Tools/BuilderTools");
-
-// Builder Updaters
-require("./routes/Builders/BuilderUpdaters/BuilderUpdaters");
-
-// electron
-require("./electron/startup")(application, path);
-
-application.use(function(req, res) {
-    res.sendFile(path.join(__dirname+"/electron/web/404/index.html"))
-});
-
-// Start the API & Log Builders feel free to change the port
-application.listen(8000, () => {
-    logger.READY("Ready! Started Running on Port: " + 8000);
-    logger.INFO(`Builders: ${runner.Build}`);
-    logger.INFO(`Loaded Schema: ${Schema}`)
-});
+let api;
+api = new API();
