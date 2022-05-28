@@ -3,12 +3,13 @@
 
 Welcome To OutlineAPI! This API Includes: AES Keys, Cosmetic Details, STW & BR News, Playlist Info, Itemshop, and etc!
 
+Note: this is still a work in progress.
+
 This API is made By:
 
 • Packet <br />
 • Zinx <br />
 • Bren <br />
-• SpushFNBR  <br />
 
 # Setup
 • First do npm install  <br />
