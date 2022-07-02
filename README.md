@@ -3,7 +3,7 @@
 
 Welcome To OutlineAPI! This API Includes: AES Keys, Cosmetic Details, STW & BR News, Playlist Info, Itemshop, and etc!
 
-Note: this is still a work in progress.
+Note: This will no longer be updated please use the one in https://github.com/OutLineApi/OutLineV2
 
 This API is made By:
 
